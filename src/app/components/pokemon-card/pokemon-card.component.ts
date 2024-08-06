@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PokemonService } from './pokemon.service';
 
@@ -9,6 +9,8 @@ import { PokemonService } from './pokemon.service';
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class PokemonCardComponent implements OnInit{
+
+  @Output('onPokemonLoad') onPokemonLoad: EventEmitter<any> = new EventEmitter();
   
   @Input('pokemon') pokemonName!: string;
 
@@ -20,5 +22,6 @@ export class PokemonCardComponent implements OnInit{
 
   ngOnInit(): void {
     this.pokemon$ = this._pokemon.getPokemon(this.pokemonName);
+    this.onPokemonLoad.emit(true);
   }
 }

@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start:dev": "ng serve --configuration=development",
     "build": "ng build",
+    "build:pokemon-card": "ng build pokemon-card && jscat ./dist/pokemon-card/runtime.js ./dist/pokemon-card/polyfills.js ./dist/pokemon-card/main.js > dist/pokemon-card/pokemon-card.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
